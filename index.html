@@ -2,8 +2,11 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Acquisto Biglietto</title>
+    <title>Acquisto Biglietto</title>   
     
+    <!-- add favicon -->
+    <link rel="icon" type="img/x-icon" href="img/icon-trenitalia.png">
+
     <!-- for media query -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -18,25 +21,138 @@
 </head>
 <body>
 
-    <section id="">
+    <section id="search">
         <div class="container-sm vh-100">
             <div class="d-flex flex-column align-items-center justify-content-center vh-100">
 
                 <img class="logo1 mb-5" src="./img/Trenitalia_logo.svg.png" alt="Trenitalia logo">
 
                 <div class="my_background h-50 w-100 rounded-4 d-flex flex-column justify-content-around bg-black">
-                    <h1 class="text-center text-danger py-5">Scegli la tua destinazione</h1>
+                    <h1 class="main text-center text-danger py-5">Scegli la tua destinazione</h1>
 
                     <div>
+                        <div class="d-flex px-2 gap-3 mb-3 ">
+                            <div class="form-floating w-50">
+                                <input type="text" class="form-control" id="floatingStart" placeholder="Stazione di Partenza">
+                                <label for="floatingStart">Stazione di Partenza</label>
+                            </div>
+                            <div class="form-floating  w-50">
+                                <input type="text" class="form-control" id="floatingArrive" placeholder="Stazione di Arrivo">
+                                <label for="floatingArrive">Stazione di Arrivo</label>
+                            </div>
+                        </div>
 
+                        <div class="d-flex px-2 gap-3">
+                            <div class="form-floating w-50">
+                                <input type="text" class="form-control" id="floatingName" placeholder="Nome e Cognome">
+                                <label for="floatingName">Nome e Cognome</label>
+                            </div>
+                            <div class="form-floating  w-25">
+                                <input type="number" class="form-control" id="floatingAge" placeholder="Età">
+                                <label for="floatingAge">Età</label>
+                            </div>
+                            <div class="form-floating  w-25">
+                                <input type="number" class="form-control" id="floatingDistance" placeholder="Distanza Km">
+                                <label for="floatingDistance">Distanza (Km)</label>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="align-self-end p-4">
-                        <button type="button" class="btn btn-danger">Cerca</button>
+                        <button id="button" type="button" class="btn btn-danger">Stampa Biglietto</button>
                     </div>
                 </div>
             
             </div>
+        </div>
+    </section>
+
+    <section id="correct-data" class="container-md p-2">
+        <div class="d-flex flex-column justify-content-between vh-100">
+            <div>
+                <div class="d-flex justify-content-between mb-4">
+                    <img class="logo" src="./img/Trenitalia_logo.svg.png" alt="">
+                    <div>
+                        <p class="small text-end">
+                            Pagina 1 di 1 <br>
+                            Partita IVA: xxxxxxxxxxx <br>
+                            <div id="date_of_issue"></div>
+                        </p>
+                    </div>
+                </div>
+                <div class="mb-4"><strong id="sum_info"></strong></div>
+    
+                <!-- tratta di viaggio -->
+                <div class="row text-white fs-4 mb-2">
+                    <div class="col-4 px-4 py-2 bg-success">
+                        <div class="mb-4">Stazione di Partenza</div>
+                        <strong id="s_station" class="fs-3"></strong> <br>
+                        <div id="departure_date"></div>
+                    </div>
+                    <div class="col-4 px-4 py-2 text-black">
+                        <div class="mb-4">Stazione di Arrivo</div>
+                        <strong id="e_station" class="fs-3"></strong> <br>
+                        <div id="arrival_time"></div>
+                    </div>
+                    <div class="col-4 px-4 py-2 text-white bg-danger">
+                        <div class="mb-1">Treno: <strong>Frecciarossa</strong></div>
+                        <div class="mb-1">Servizio: <strong>Standard</strong></div>
+                        <div class="mb-1">Carrozza: <strong>4</strong></div>
+                        <div class="mb-1">Posto: <strong>11D</strong></div>
+                    </div>
+                </div>
+    
+                <!-- prezzo biglietto -->
+                <div class="text-end fs-4 bg-dark-subtle py-2 mb-4">
+                    Importo Totale: <strong id="price"></strong>
+                </div>
+    
+                <!-- dettagli viaggio -->
+                <div>
+                    <h4>DETTAGLIO PASSEGGERI</h4>
+                    <div class="row ms_border">
+                        <div class="col-4 bg-dark-subtle py-2">
+                            Nome passeggero <br>
+                            <strong id="passenger_name" class="fs-2"></strong>
+                        </div>
+                        <div class="col-8 text-center">
+                            <div class="d-flex justify-content-around px-lg-2 py-2">
+                                <div class="align-self-center">
+                                    Servizio
+                                    <h5>Standard</h5>
+                                </div>
+                                <div class="align-self-center px-2">
+                                    <i class="fa-solid fa-train"></i> <br>
+                                    <strong>4</strong>
+                                </div>
+                                <div class="align-self-center px-2">
+                                    <i class="fa-solid fa-couch"></i> <br>
+                                    <strong>11D</strong>
+                                </div>
+                                <div class="align-self-center">
+                                    Punti CARTA FRECCIA <br>
+                                    <strong></strong>
+                                </div>
+                                <div>
+                                    <img src="./img/QR_ANDROID.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- pubblicità -->
+            <div>
+                <img class="w-100" src="./img/banner pubblicità.jpg" alt="ads banner">
+            </div>
+        </div>
+    </section>
+
+    <section id="wrong_data">
+        <div class="text-center vh-100">
+            <h1 class="error">Errore</h1>
+            <strong id="message"></strong>
         </div>
     </section>
 
